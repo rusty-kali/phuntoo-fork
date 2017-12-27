@@ -9,6 +9,5 @@
 		<name>phunyguy</name>
 	</owner>
 	<source type="git">git://git.neverserio.us/repo/phuntoo</source>
-	<feed>https://github.com/edoceo/praxis/commits/master.atom</feed>
 </repo>
 </repositories>
