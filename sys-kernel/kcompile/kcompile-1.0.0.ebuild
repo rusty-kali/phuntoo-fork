@@ -20,5 +20,5 @@ src_prepare() {
 }
 
 src_install() {
-	dobin kcompile
+	dosbin kcompile
 }
