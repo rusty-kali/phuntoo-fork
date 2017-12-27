@@ -14,6 +14,8 @@ fi
 SRC_URI_SUFFIX="tar.gz"
 SRC_URI="https://git.neverserio.us/cgi-bin/cgit.cgi/kcompile/snapshot/kcompile-${VERSION}.${SRC_URI_SUFFIX}"
 
+DEPEND="sys-apps/kmod[lzma]"
+
 src_unpack() {
 	default
 	mv ${PN}-*/ ${P}
