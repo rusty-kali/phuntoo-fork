@@ -35,4 +35,5 @@ src_prepare() {
 
 src_install() {
 	dosbin kcompile
+	doman kcompile.8
 }
