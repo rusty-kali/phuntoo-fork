@@ -10,16 +10,18 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="dracut genkernel grub"
 
-if [[ ${PV} == *9999 ]]; then
-        KEYWORDS=""
-	VERSION="master"
+MY_PN=${PN,,}
+MY_P=${MY_PN}-${PV}
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	KEYWORDS=""
+	EGIT_REPO_URI="git://git.neverserio.us/proj/kcompile"
 else
 	KEYWORDS="~amd64"
-	VERSION="${PV}"
+	SRC_URI_SUFFIX="tar.gz"
+	SRC_URI="https://git.neverserio.us/cgi-bin/cgit.cgi/${MY_PN:0:1}/snapshot/${MY_P}.${SRC_URI_SUFFIX}"
 fi
-
-SRC_URI_SUFFIX="tar.gz"
-SRC_URI="https://git.neverserio.us/cgi-bin/cgit.cgi/kcompile/snapshot/kcompile-${VERSION}.${SRC_URI_SUFFIX}"
 
 RDEPEND="sys-apps/kmod[lzma]
 	net-misc/curl
@@ -27,15 +29,6 @@ RDEPEND="sys-apps/kmod[lzma]
 	dracut? ( sys-kernel/dracut )
 	genkernel? ( || ( sys-kernel/genkernel sys-kernel/genkernel-next ) )
 	grub? ( sys-boot/grub )"
-
-src_unpack() {
-	default
-	mv ${PN}-*/ ${P}
-}
-
-src_prepare() {
-	default
-}
 
 src_install() {
 	dosbin kcompile
