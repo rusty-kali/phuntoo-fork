@@ -1,13 +1,17 @@
-EAPI=6
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 
+EAPI=6
 DESCRIPTION="Automatic Gentoo Kernel Upgrades"
+
 HOMEPAGE="https://git.neverserio.us/cgi-bin/cgit.cgi/kcompile/"
-LICENSE="GPL-3"
+
+LICENSE="GPL-2"
 SLOT="0"
 IUSE="dracut genkernel grub"
 
-
 if [[ ${PV} == *9999 ]]; then
+        KEYWORDS=""
 	VERSION="master"
 else
 	KEYWORDS="~amd64"
@@ -17,7 +21,7 @@ fi
 SRC_URI_SUFFIX="tar.gz"
 SRC_URI="https://git.neverserio.us/cgi-bin/cgit.cgi/kcompile/snapshot/kcompile-${VERSION}.${SRC_URI_SUFFIX}"
 
-DEPEND="sys-apps/kmod[lzma]
+RDEPEND="sys-apps/kmod[lzma]
 	net-misc/curl
 	app-admin/eclean-kernel
 	dracut? ( sys-kernel/dracut )

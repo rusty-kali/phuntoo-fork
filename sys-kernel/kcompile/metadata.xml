@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <bugs-to>mailto:phunyguy@neverserio.us</bugs-to>
+    <changelog>https://git.neverserio.us/cgi-bin/cgit.cgi/kcompile/?h=v1.1.1</changelog>
+    <doc>https://git.neverserio.us/cgi-bin/cgit.cgi/kcompile/?h=v1.1.1</doc>
+  </upstream>
+  <maintainer type="person">
+    <email>phunyguy@neverserio.us</email>
+    <name>Rob Tongue</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>kcompile@neverserio.us</email>
+  </maintainer>
+  <use>
+    <flag name="dracut">
+      Pull in sys-kernel/dracut for initramfs support 
+    </flag>
+    <flag name="genkernel">
+      Pull in sys-kernel/genkernel for initramfs support 
+    </flag>
+    <flag name="grub">
+      Pull in sys-boot/grub for bootloader support 
+    </flag>
+  </use>
+</pkgmetadata>
