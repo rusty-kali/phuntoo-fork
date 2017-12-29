@@ -2,7 +2,7 @@ EAPI=6
 
 DESCRIPTION="Automatic Gentoo Kernel Upgrades"
 HOMEPAGE="https://git.neverserio.us/cgi-bin/cgit.cgi/kcompile/"
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 IUSE="dracut genkernel grub"
 
