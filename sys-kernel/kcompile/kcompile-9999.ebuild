@@ -27,6 +27,15 @@ RDEPEND="sys-apps/kmod[lzma]
 	genkernel? ( || ( sys-kernel/genkernel sys-kernel/genkernel-next ) )
 	grub? ( sys-boot/grub )"
 
+src_prepare() {
+	default
+	if [[ ${PV} == 9999 ]]; then
+		sed -i "s/@VERSION@/$(git describe --tags | sed 's/v*//')-$(git rev-parse --short HEAD)/" kcompile.8
+	else
+		sed -i "s/@VERSION@/${PV}/" kcompile.8
+	fi
+}
+
 src_install() {
 	dosbin kcompile
 	doman kcompile.8
