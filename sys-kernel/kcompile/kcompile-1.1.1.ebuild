@@ -10,9 +10,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="dracut genkernel grub"
 
-#MY_PN=${PN,,}
-#MY_P=${MY_PN}-${PV}
-
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	KEYWORDS=""
