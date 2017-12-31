@@ -14,6 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	KEYWORDS=""
 	EGIT_REPO_URI="git://git.neverserio.us/proj/${PN}"
+	EGIT_BRANCH="development"
 else
 	KEYWORDS="~amd64"
 	SRC_URI_SUFFIX="tar.gz"
