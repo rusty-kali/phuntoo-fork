@@ -3,8 +3,8 @@
 <pkgmetadata>
   <upstream>
     <bugs-to>mailto:phunyguy@neverserio.us</bugs-to>
-    <changelog>https://git.neverserio.us/cgi-bin/cgit.cgi/kcompile/?h=v1.1.1</changelog>
-    <doc>https://git.neverserio.us/cgi-bin/cgit.cgi/kcompile/?h=v1.1.1</doc>
+    <changelog>https://neverserio.us/proj/kcompile/changelog.html</changelog>
+    <doc>https://neverserio.us/proj/kcompile/documentation.html</doc>
   </upstream>
   <maintainer type="person">
     <email>phunyguy@neverserio.us</email>
@@ -15,13 +15,13 @@
   </maintainer>
   <use>
     <flag name="dracut">
-      Pull in sys-kernel/dracut for initramfs support 
+      Pull in sys-kernel/dracut for initramfs support
     </flag>
     <flag name="genkernel">
-      Pull in sys-kernel/genkernel for initramfs support 
+      Pull in sys-kernel/genkernel for initramfs support
     </flag>
     <flag name="grub">
-      Pull in sys-boot/grub for bootloader support 
+      Pull in sys-boot/grub for bootloader support
     </flag>
   </use>
 </pkgmetadata>
