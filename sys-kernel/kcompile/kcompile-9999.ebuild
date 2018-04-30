@@ -18,7 +18,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	KEYWORDS="~amd64"
 	SRC_URI_SUFFIX="tar.gz"
-	SRC_URI="https://git.neverserio.us/cgi-bin/cgit.cgi/${PN}/snapshot/${P}.${SRC_URI_SUFFIX}"
+	SRC_URI="https://git.neverserio.us/proj/${PN}/snapshot/${P}.${SRC_URI_SUFFIX}"
 fi
 
 RDEPEND="sys-apps/kmod[lzma]
