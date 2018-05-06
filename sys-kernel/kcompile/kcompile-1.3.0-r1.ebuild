@@ -24,6 +24,7 @@ fi
 RDEPEND="sys-apps/kmod[lzma]
 	net-misc/curl
 	app-admin/eclean-kernel
+	app-portage/gentoolkit
 	dracut? ( sys-kernel/dracut )
 	genkernel? ( || ( sys-kernel/genkernel sys-kernel/genkernel-next ) )
 	grub? ( sys-boot/grub )"
