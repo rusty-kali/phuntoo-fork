@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,6 @@ IUSE="dracut genkernel grub"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	KEYWORDS=""
 	EGIT_REPO_URI="git://git.neverserio.us/proj/${PN}"
 	EGIT_BRANCH="development"
 else
