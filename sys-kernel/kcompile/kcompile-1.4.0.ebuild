@@ -13,7 +13,7 @@ IUSE="dracut genkernel grub"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	KEYWORDS=""
-	EGIT_REPO_URI="git://git.neverserio.us/proj/${PN}"
+	EGIT_REPO_URI="https://git.neverserio.us/proj/${PN}"
 	EGIT_BRANCH="master"
 else
 	KEYWORDS="~amd64"
