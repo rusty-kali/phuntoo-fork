@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 DESCRIPTION="Kernel config ebuilds for Gentoo"
 
 HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
@@ -13,7 +13,7 @@ S="${WORKDIR}"
 echo ${D}
 
 src_install() {
-    FINAL="${D}/usr/share/${PN}/${PN}-${PVR}"
+    FINAL="${D}/usr/share/${PN}/${PN}-${PV%.*}"
     mkdir -p "${FINAL}"
     cp "${S}/kconfigs-surface-${PV}/config" "${FINAL}/"
     return
