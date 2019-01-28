@@ -7,6 +7,7 @@ DESCRIPTION="Kernel ebuilds for Microsoft Surface Devices"
 HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
 
 LICENSE="GPL-2"
+KEYWORDS="~amd64"
 SLOT="${PV}"
 
 DEPEND="sys-apps/kmod[lzma]
