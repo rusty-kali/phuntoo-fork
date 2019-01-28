@@ -68,7 +68,6 @@ src_compile() {
 }
 
 src_install() {
-    rm -rf "${S}/final/lib/firmware" || die
     mv -T "${S}/final/" "${D}/" || die
     return
 }

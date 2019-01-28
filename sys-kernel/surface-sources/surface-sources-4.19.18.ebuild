@@ -11,4 +11,4 @@ SLOT="${PV}"
 
 DEPEND="sys-apps/kmod[lzma]
     sys-firmware/intel-microcode
-    =sys-kernel/linux-image:${PV}[surface]"
+    sys-kernel/linux-image:${PV}[surface]"
