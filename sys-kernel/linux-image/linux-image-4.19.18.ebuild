@@ -24,7 +24,7 @@ fi
 SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v${KERNELMAJOR}.x/linux-${UPSTREAMVERSION}.tar.xz"
 
 DEPEND="
-    ^^
+    ||
         (
             surface? (
                 sys-kernel/config-surface:${CFGSLOT}=
