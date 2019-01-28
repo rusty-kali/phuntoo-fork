@@ -10,6 +10,4 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64"
 SLOT="${PV}"
 
-DEPEND="sys-apps/kmod[lzma]
-    sys-firmware/intel-microcode
-    sys-kernel/linux-image:${PV}[surface]"
+DEPEND="sys-kernel/linux-image:${PV}[surface]"

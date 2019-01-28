@@ -24,7 +24,7 @@ fi
 SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v${KERNELMAJOR}.x/linux-${UPSTREAMVERSION}.tar.xz"
 
 DEPEND="
-    ||
+    ^^
         (
             surface? (
                 sys-kernel/config-surface:${CFGSLOT}=
@@ -36,7 +36,8 @@ DEPEND="
             longterm? (
                 sys-kernel/config-longterm:${CFGSLOT}=
             )
-    )"
+    )
+    sys-apps/kmod[lzma]"
 
 src_unpack() {
 	mkdir -p "${S}"
