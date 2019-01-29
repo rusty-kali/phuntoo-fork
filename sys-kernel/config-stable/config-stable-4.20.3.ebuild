@@ -8,7 +8,7 @@ HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
 LICENSE="GPL-2"
 KEYWORDS="~amd64"
 SLOT="${PV%.*}/${PV##*.}"
-SRC_URI="https://git.neverserio.us/proj/kconfigs/snapshot/k${PN}-${PV}.tar.gz"
+SRC_URI="https://git.neverserio.us/proj/kconfig/snapshot/k${PN}-${PV}.tar.gz"
 S="${WORKDIR}"
 
 src_install() {
