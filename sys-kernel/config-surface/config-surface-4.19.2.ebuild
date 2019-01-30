@@ -8,12 +8,12 @@ HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
 LICENSE="GPL-2"
 KEYWORDS="~amd64"
 SLOT="${PV%.*}/${PV##*.}"
-SRC_URI="https://git.neverserio.us/proj/kconfigs/snapshot/kconfigs-surface-${PV}.tar.gz"
+SRC_URI="https://git.neverserio.us/proj/kconfig/snapshot/k${PN}-${PV}.tar.gz"
 S="${WORKDIR}"
 
 src_install() {
     FINAL="${D}/usr/share/${PN}/${PN}-${PV%.*}"
     mkdir -p "${FINAL}"
-    cp "${S}/kconfigs-surface-${PV}/config" "${FINAL}/"
+    cp "${S}/k${PN}-${PV}/config" "${FINAL}/"
     return
 }
