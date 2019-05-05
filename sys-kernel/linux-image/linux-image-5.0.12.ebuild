@@ -28,7 +28,7 @@ DEPEND="
         (
             surface? (
                 sys-kernel/config-surface:${CFGSLOT}=
-                sys-kernel/patches-surface:${KERNELVERSION}=
+                sys-kernel/patches-surface:${UPSTREAMVERSION}=
             )
             stable? (
                 sys-kernel/config-stable:${CFGSLOT}=

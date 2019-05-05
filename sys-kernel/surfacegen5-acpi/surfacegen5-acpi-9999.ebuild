@@ -5,7 +5,7 @@ EAPI=6
 
 inherit linux-mod
 
-DESCRIPTION="Linux ACPI/Platform Drivers for 5th Gen. Surface Devices (Surface Book 2, Surface Pro 2017, Surface Laptop, and Newer)"
+DESCRIPTION="Linux ACPI/Platform Drivers for 5th Gen. Surface Devices"
 
 HOMEPAGE="https://github.com/qzed/linux-surfacegen5-acpi"
 
@@ -36,5 +36,5 @@ src_compile() {
 
 src_install() {
 	linux-mod_src_install
-	dosbin ${S}/scripts/sysfs_rqst.py
+	dosbin "${S}/scripts/sysfs_rqst.py"
 }
