@@ -27,6 +27,7 @@ MODULE_NAMES="surfacegen5_acpi(acpi:${S}/module)"
 pkg_setup() {
 	linux-mod_pkg_setup
 	BUILD_TARGETS="all"
+	BUILD_PARAMS="KVERSION=${KV_FULL}"
 }
 
 src_compile() {
