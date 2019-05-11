@@ -26,11 +26,13 @@ MODULE_NAMES="surfacegen5_acpi(acpi:${S}/module)"
 
 pkg_setup() {
 	linux-mod_pkg_setup
-	BUILD_TARGETS="all"
-	BUILD_PARAMS="KVERSION=${KV_FULL}"
+	BUILD_TARGETS="gentoo-install"
+	BUILD_PARAMS="INCLUDEDIR=/lib/modules/${KV_FULL}/build/include KERN_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} KVERSION=${KV_FULL}"
 }
 
 src_compile() {
+	echo -e "gentoo-install:" >> ./module/Makefile
+	echo -e "\tmake -C ${KV_DIR} M=${S}/module modules" >> ./module/Makefile
 	linux-mod_src_compile
 	default
 }
