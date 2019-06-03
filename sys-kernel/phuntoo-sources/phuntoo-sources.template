@@ -8,7 +8,7 @@ HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
 
 LICENSE="GPL-2"
 KEYWORDS=""
-IUSE=""
+IUSE="surface"
 SLOT="${PVR}"
 
 RDEPEND="
