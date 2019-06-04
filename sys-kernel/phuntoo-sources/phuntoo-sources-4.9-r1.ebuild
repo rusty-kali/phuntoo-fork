@@ -9,7 +9,7 @@ HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
 LICENSE="GPL-2"
 KEYWORDS="-* amd64"
 IUSE="surface"
-SLOT="${PVR}"
+SLOT="${PV}"
 
 RDEPEND="
 	surface? (
