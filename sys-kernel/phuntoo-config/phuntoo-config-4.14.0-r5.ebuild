@@ -6,12 +6,13 @@ DESCRIPTION="Kernel config ebuilds for Gentoo"
 
 HOMEPAGE="https://git.neverserio.us/proj/phuntoo-config"
 LICENSE="GPL-2"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 SLOT="${PV%.*}"
 SRC_URI="https://git.neverserio.us/proj/${PN}/snapshot/${PN}-${PV}.tar.gz"
 IUSE="surface"
 FINAL="${D}/usr/share/${PN}/${PN}-${SLOT}"
 KCONFIG="${WORKDIR}/${PN}-${PV}/config"
+RDEPEND="sys-apps/kmod[lzma]"
 
 src_install() {
 	mkdir -p "${FINAL}"

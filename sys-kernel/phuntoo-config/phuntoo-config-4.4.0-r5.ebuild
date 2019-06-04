@@ -12,6 +12,7 @@ SRC_URI="https://git.neverserio.us/proj/${PN}/snapshot/${PN}-${PV}.tar.gz"
 IUSE="surface"
 FINAL="${D}/usr/share/${PN}/${PN}-${SLOT}"
 KCONFIG="${WORKDIR}/${PN}-${PV}/config"
+RDEPEND="sys-apps/kmod[lzma]"
 
 src_install() {
 	mkdir -p "${FINAL}"
