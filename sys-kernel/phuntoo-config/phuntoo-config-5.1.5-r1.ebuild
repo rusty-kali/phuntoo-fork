@@ -11,7 +11,7 @@ SLOT="${PV%.*}"
 SRC_URI="https://git.neverserio.us/proj/${PN}/snapshot/${PN}-${PV}.tar.gz"
 IUSE="surface"
 FINAL="${D}/usr/share/${PN}/${PN}-${SLOT}"
-KCONFIG="${WORKDIR}/${PN}-${PVR}/config"
+KCONFIG="${WORKDIR}/${PN}-${PV}/config"
 
 src_install() {
 	mkdir -p "${FINAL}"
