@@ -9,6 +9,7 @@ LICENSE="GPL-2"
 KEYWORDS="-* ~amd64"
 SLOT="${PV%.*}"
 SRC_URI="https://git.neverserio.us/proj/${PN}/snapshot/${PN}-${PV}.tar.gz"
+IUSE=""
 FINAL="${D}/usr/share/${PN}/${PN}-${SLOT}"
 KCONFIG="${WORKDIR}/${PN}-${PVR}/config"
 
