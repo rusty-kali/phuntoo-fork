@@ -14,7 +14,10 @@ SLOT="${PV}"
 RDEPEND="
 	surface? (
 		=sys-kernel/phuntoo-config-${PV}*[surface]
-		=sys-kernel/surface-patches-${PV}*
+		|| (
+			=sys-kernel/surface-patches-${PV}*
+			<sys-kernel/surface-patches-1.1
+		)
 	)
 	!surface? (
 		=sys-kernel/phuntoo-config-${PV}*[-surface]
