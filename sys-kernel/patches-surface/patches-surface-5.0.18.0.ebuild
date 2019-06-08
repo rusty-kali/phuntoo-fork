@@ -6,7 +6,7 @@ DESCRIPTION="Kernel patch ebuilds for Gentoo"
 
 HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
+KEYWORDS=""
 SLOT="${PV%.*}/${PV##*.}"
 SRC_URI="https://git.neverserio.us/proj/kpatches/snapshot/kpatches-surface-${PV}.tar.gz"
 S="${WORKDIR}"
@@ -18,4 +18,3 @@ src_install() {
     cp *.patch "${FINAL}/"
     return
 }
-

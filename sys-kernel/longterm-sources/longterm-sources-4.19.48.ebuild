@@ -7,7 +7,7 @@ DESCRIPTION="Linux upstream longterm kernel ebuilds."
 HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64"
+KEYWORDS=""
 SLOT="${PV}"
 
 DEPEND="sys-kernel/linux-image:${PV}[longterm]"
