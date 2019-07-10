@@ -24,9 +24,13 @@ CONFIG_CHECK="~FB_VIRTUAL"
 
 pkg_setup() {
 	linux-mod_pkg_setup
+	BUILD_PARAMS="KV_DIR=${KV_DIR} KERN_VER=${KV_FULL} O=${KV_OUT_DIR} INCLUDEDIR=${KV_DIR}/include KDIR=${KV_DIR}"
 }
 
 src_compile() {
+	ls -al ./module/
+	sed -i 's|/lib/modules/\$(KERNELRELEASE)/build|\$(KV_DIR)|g' ./module/Makefile
+	cat ./module/Makefile
 	linux-mod_src_compile
 	cd "${S}/library"
 	default
