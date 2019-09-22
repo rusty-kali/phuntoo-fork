@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-DESCRIPTION="Kernel patch ebuilds for Surface Devices on Gentoo"
+DESCRIPTION="Firmware ebuilds for Surface Devices on Gentoo"
 
-HOMEPAGE="https://git.neverserio.us/proj/surface-patches/"
+HOMEPAGE="https://git.neverserio.us/proj/surface-firmware/"
 LICENSE="GPL-2"
 KEYWORDS="-* amd64"
 SLOT="${PV%.*}"
