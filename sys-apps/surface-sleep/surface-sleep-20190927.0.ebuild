@@ -6,7 +6,7 @@ DESCRIPTION="Kernel sleep script ebuilds for Surface Devices on Gentoo"
 
 HOMEPAGE="https://git.neverserio.us/proj/surface-sleep/"
 LICENSE="GPL-2"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 SLOT="${PV%.*}"
 SRC_URI="https://git.neverserio.us/proj/${PN}/snapshot/${PN}-${PV}.tar.gz"
 IUSE="systemd"
