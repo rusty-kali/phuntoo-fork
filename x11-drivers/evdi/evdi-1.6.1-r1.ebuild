@@ -11,7 +11,7 @@ SRC_URI="https://github.com/DisplayLink/evdi/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86 amd64"
 
 RDEPEND="x11-libs/libdrm"
 DEPEND="${RDEPEND}
