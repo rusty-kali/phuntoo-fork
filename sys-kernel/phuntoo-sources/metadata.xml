@@ -17,5 +17,8 @@
     <flag name="surface">
       Modify installed kernel config to include options for Microsoft Surface Devices.
     </flag>
+    <flag name="systemd">
+      Include a sleep script to fix some issues with surface devices going to sleep, then losing wifi.
+    </flag>
   </use>
 </pkgmetadata>
