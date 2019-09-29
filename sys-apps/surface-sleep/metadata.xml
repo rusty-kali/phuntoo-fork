@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <bugs-to>mailto:phunyguy@neverserio.us</bugs-to>
+    <changelog>https://git.neverserio.us/proj/surface-sleep</changelog>
+    <doc>https://git.neverserio.us/proj/surface-sleep</doc>
+  </upstream>
+  <maintainer type="person">
+    <email>phunyguy@neverserio.us</email>
+    <name>Rob Tongue</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>surface-sleep@neverserio.us</email>
+  </maintainer>
+  <use>
+    <flag name="systemd">
+      Support systemd style suspending. If unset, script is placed in /usr/sbin to call manually as surface-sleep.
+    </flag>
+  </use>
+</pkgmetadata>
