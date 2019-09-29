@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
 
 LICENSE="GPL-2"
 KEYWORDS="-* amd64"
-IUSE="surface"
+IUSE="surface systemd"
 SLOT="${PV}"
 
 RDEPEND="
@@ -20,6 +20,12 @@ RDEPEND="
 		)
 		sys-kernel/surface-firmware
 		sys-kernel/linux-firmware
+		systemd? (
+			sys-apps/surface-sleep[systemd]
+		)
+		!systemd? (
+			sys-apps/surface-sleep[-systemd]
+		)
 	)
 	!surface? (
 		=sys-kernel/phuntoo-config-${PV}*[-surface]
