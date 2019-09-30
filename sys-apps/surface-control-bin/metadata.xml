@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <bugs-to>https://github.com/qzed/linux-surface-control</bugs-to>
+    <changelog>https://github.com/qzed/linux-surface-control</changelog>
+    <doc>https://github.com/qzed/linux-surface-control</doc>
+  </upstream>
+  <maintainer type="person">
+    <email>phunyguy@neverserio.us</email>
+    <name>Rob Tongue</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>luzmaximilian@gmail.com</email>
+  </maintainer>
+  <use>
+    <flag name="bash-completion">
+      Add completion file for Bash shell.
+    </flag>
+  </use>
+</pkgmetadata>

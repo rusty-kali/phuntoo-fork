@@ -19,6 +19,7 @@ RDEPEND="
 			<sys-kernel/surface-patches-1.1
 		)
 		sys-kernel/surface-firmware
+		sys-apps/surface-control-bin
 		sys-kernel/linux-firmware
 		systemd? (
 			sys-apps/surface-sleep[systemd]
