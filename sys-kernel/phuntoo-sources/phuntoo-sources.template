@@ -8,7 +8,7 @@ HOMEPAGE="https://git.neverserio.us/repo/phuntoo/"
 
 LICENSE="GPL-2"
 KEYWORDS=""
-IUSE="surface systemd"
+IUSE="surface systemd dbus"
 SLOT="${PV}"
 
 RDEPEND="
@@ -27,6 +27,7 @@ RDEPEND="
 		!systemd? (
 			sys-apps/surface-sleep[-systemd]
 		)
+		dbus? (sys-apps/dbus)
 	)
 	!surface? (
 		=sys-kernel/phuntoo-config-${PV}*[-surface]

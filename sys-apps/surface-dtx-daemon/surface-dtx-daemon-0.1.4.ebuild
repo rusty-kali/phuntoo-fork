@@ -139,7 +139,7 @@ DESCRIPTION="Control various aspects of Microsoft Surface devices."
 
 HOMEPAGE="https://github.com/qzed/linux-surface-control"
 LICENSE="MIT"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 SLOT="0"
 SRC_URI="
 	$(cargo_crate_uris ${CRATES})
