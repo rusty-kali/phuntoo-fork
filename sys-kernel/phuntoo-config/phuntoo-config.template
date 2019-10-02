@@ -5,6 +5,7 @@ EAPI=7
 LICENSE="GPL-2"
 KEYWORDS=""
 HOMEPAGE="https://www.phuntoo.org/overlay"
+DESCRIPTION="Kernel config ebuilds for Gentoo"
 IUSE="surface"
 
 # Target specific commit for this package. We don't care about their upstream versioning.
@@ -76,7 +77,7 @@ src_prepare() {
 		KOPTION="CONFIG_SURFACE_3_POWER_OPREGION"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
 		KOPTION="CONFIG_PCIEPORTBUS"; sed -ie "s/${KOPTION}=.*/\# ${KOPTION} is not set/" ${KCONFIG}
 	fi
-	
+
 	sed -i -e "s/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=\"\"/" "${KCONFIG}"
 	eapply_user
 }
