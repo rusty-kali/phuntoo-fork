@@ -3,14 +3,14 @@
 
 EAPI=7
 LICENSE="GPL-2"
-KEYWORDS="-* ~amd64"
+KEYWORDS=""
 HOMEPAGE="https://www.phuntoo.org/overlay"
 IUSE="surface"
 
 # Target specific commit for this package. We don't care about their upstream versioning.
-COMMIT="6ac594c6f2a54b81e4c6e7a5432376345de56b75"
-
-SRC_URI="https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${COMMIT} -> ${PN}-${PVR}"
+ARCHPACKAGE=""
+COMMIT=""
+SRC_URI="https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/${ARCHPACKAGE}&id=${COMMIT} -> ${PN}-${PVR}"
 
 # We want one slot per kernel tree, eg: x.y.
 # Updates within each kernel tree will overwrite
