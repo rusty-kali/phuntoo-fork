@@ -79,6 +79,7 @@ src_prepare() {
 	sed -i -e "s/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=\"\"/" "${KCONFIG}"
 	eapply_user
 }
+
 src_install() {
 	insopts -m 0644
 	insinto "${FINAL}"
