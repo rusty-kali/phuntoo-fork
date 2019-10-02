@@ -20,7 +20,7 @@ src_unpack() {
 }
 
 src_install() {
-	mv "${WORKDIR}/${PN}-${PV}/sleep" "${WORKDIR}/${PN}-${PV}/surface-sleep"
+	mv "${WORKDIR}/${PN}-${PVR}/sleep" "${WORKDIR}/${PN}-${PVR}/surface-sleep"
 	dosbin surface-sleep
 	if use systemd; then
 		ln -sf /usr/sbin/surface-sleep "${FINAL}/sleep"
