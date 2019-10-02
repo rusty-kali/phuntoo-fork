@@ -27,7 +27,9 @@ RDEPEND="
 		!systemd? (
 			sys-apps/surface-sleep[-systemd]
 		)
-		dbus? ( sys-apps/dbus )
+		dbus? (
+			sys-apps/surface-dtx-daemon
+		)
 	)
 	!surface? (
 		=sys-kernel/phuntoo-config-${PV}*[-surface]
