@@ -4,19 +4,31 @@
 EAPI=7
 DESCRIPTION="Kernel sleep script ebuilds for Surface Devices on Gentoo"
 
-HOMEPAGE="https://git.neverserio.us/proj/surface-sleep/"
+HOMEPAGE="https://github.com/qzed/linux-surface"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-SRC_URI="https://git.neverserio.us/proj/${PN}/snapshot/${PN}-${PV}.tar.gz"
+COMMIT=""
+SRC_URI="https://raw.githubusercontent.com/qzed/linux-surface/${COMMIT}/root/lib/systemd/system-sleep/sleep -> ${PN}-${PVR}"
 IUSE="systemd"
-FINAL="${D}/lib/systemd/system-sleep/"
+FINAL="/lib/systemd/system-sleep/"
 RDEPEND="systemd? ( sys-apps/systemd )"
+
+src_unpack() {
+	mkdir -p "${S}" || die "Failed to create ${S}"
+	cp "${DISTDIR}/${PN}-${PVR}" "${S}"/
+}
+
 src_install() {
-	mkdir -p "${FINAL}" || die
 	mv "${WORKDIR}/${PN}-${PV}/sleep" "${WORKDIR}/${PN}-${PV}/surface-sleep"
 	dosbin surface-sleep
 	if use systemd; then
 		ln -sf /usr/sbin/surface-sleep "${FINAL}/sleep"
 	fi
+}
+
+src_install() {
+	insopts -m 0755
+	insinto "${FINAL}"
+	newins "${S}/${PN}-${PVR}" sleep
 }
