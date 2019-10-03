@@ -11,7 +11,7 @@ SLOT="0"
 UPSTREAM="linux-surface"
 COMMIT="51d4546450322576ca633a22346265d2c0f5d780"
 SRC_URI="https://github.com/qzed/${UPSTREAM}/archive/${COMMIT}.zip -> ${PN}-${PVR}.zip"
-FINAL="/etc/udev"
+FINAL="/lib/udev"
 RDEPEND="virtual/udev"
 S="${WORKDIR}/${UPSTREAM}-${COMMIT}"
 
