@@ -184,7 +184,9 @@ src_install() {
 		systemd_dounit "${S}"/etc/systemd/surface-dtx-daemon.service
 		systemd_douserunit "${S}"/etc/systemd/surface-dtx-userd.service
 	fi
-	cp "${S}"/etc/dbus/org.surface.dtx.conf "${D}"/etc/dbus-1/system.d/org.surface.dtx.conf
+	insopts -m 0644
+	insinto /etc/dbus-1/system.d
+	doins "${S}"/etc/dbus/org.surface.dtx.conf
 	if use bash-completion; then
 		newbashcomp "${S}"/target/surface-dtx-daemon.bash surface-dtx-daemon
 		newbashcomp "${S}"/target/surface-dtx-userd.bash surface-dtx-userd
