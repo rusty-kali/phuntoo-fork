@@ -3,14 +3,14 @@
 
 EAPI=7
 LICENSE="GPL-2"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 HOMEPAGE="https://www.phuntoo.org/overlay"
 DESCRIPTION="Kernel config ebuilds for Gentoo"
 IUSE="surface"
 
 # Target specific commit for this package. We don't care about their upstream versioning.
-ARCHPACKAGE="linux"
-COMMIT="2c9455dbc7feb1e44e29d486a587a34eef9347b0"
+ARCHPACKAGE="linux-lts"
+COMMIT="20d5e134c5154161886d4f049811c9b30cd6544b"
 SRC_URI="https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/${ARCHPACKAGE}&id=${COMMIT} -> ${PN}-${PVR}"
 
 # We want one slot per kernel tree, eg: x.y.
@@ -26,6 +26,9 @@ src_unpack() {
 	mkdir -p "${S}" || die "Failed to create ${S}"
 	cp "${DISTDIR}/${PN}-${PVR}" "${S}"/
 }
+
+# A very special THANK YOU to nemesus for helping to streamline
+# the src_prepare() function.  I couldn't have done it without you.
 
 src_prepare() {
 	OPTIONS=(
@@ -98,10 +101,10 @@ src_prepare() {
 						VALUE="${OPTIONS[$idx]//*=}"
 						if test "${OPTION}" = "${NAME}"; then
 							if test -z "${VALUE}"; then
-								echo "Setting # ${NAME} is not set" > /dev/stderr
+								einfo "Setting # ${NAME} is not set"
 								echo "# ${NAME} is not set"
 							else
-								echo "Setting ${NAME}=${VALUE}" > /dev/stderr
+								einfo "Setting ${NAME}=${VALUE}"
 								echo "${NAME}=${VALUE}"
 							fi
 							OPTIONS[$idx]=""
@@ -119,10 +122,10 @@ src_prepare() {
 			NAME="${OPTIONS[$idx]//=*}"
 			VALUE="${OPTIONS[$idx]//*=}"
 			if test -z "${VALUE}"; then
-				echo "# Adding ${NAME} is not set" > /dev/stderr
+				einfo "# Adding ${NAME} is not set"
 				echo "# ${NAME} is not set"
 			else
-				echo "Adding ${NAME}=${VALUE}" > /dev/stderr
+				einfo "Adding ${NAME}=${VALUE}"
 				echo "${NAME}=${VALUE}"
 			fi
 		done
