@@ -1,17 +1,21 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-DESCRIPTION="Kernel patch ebuilds for Surface Devices on Gentoo"
+DESCRIPTION="Kernel sleep script ebuilds for Surface Devices on Gentoo"
 
-HOMEPAGE="https://git.neverserio.us/proj/surface-patches/"
+HOMEPAGE="https://github.com/qzed/linux-surface"
 LICENSE="GPL-2"
 KEYWORDS="-* amd64"
-SLOT="${PV%.*}"
-SRC_URI="https://git.neverserio.us/proj/${PN}/snapshot/${PN}-${PV}.tar.gz"
-FINAL="${D}/lib/"
+SLOT="0"
+UPSTREAM="linux-surface"
+COMMIT="master"
+SRC_URI="https://github.com/qzed/${UPSTREAM}/archive/${COMMIT}.zip -> ${PN}-${PVR}.zip"
+FINAL="/lib"
+S="${WORKDIR}/${UPSTREAM}-${COMMIT}"
 
 src_install() {
-	mkdir -p "${FINAL}" || die
-	cp -vR "${WORKDIR}/${PN}-${PV}/firmware" "${FINAL}/" || die
+	insopts -m 0644
+	insinto "${FINAL}"
+	doins -r "${S}/firmware"
 }
