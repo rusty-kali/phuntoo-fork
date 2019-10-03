@@ -27,6 +27,9 @@ src_unpack() {
 	cp "${DISTDIR}/${PN}-${PVR}" "${S}"/
 }
 
+# A very special THANK YOU to nemesus for helping to streamline
+# the src_prepare() function.  I couldn't have done it without you.
+
 src_prepare() {
 	OPTIONS=(
 		# Enable gentoo systemd and module shit
@@ -98,10 +101,10 @@ src_prepare() {
 						VALUE="${OPTIONS[$idx]//*=}"
 						if test "${OPTION}" = "${NAME}"; then
 							if test -z "${VALUE}"; then
-								echo "Setting # ${NAME} is not set" > /dev/stderr
+								einfo "Setting # ${NAME} is not set"
 								echo "# ${NAME} is not set"
 							else
-								echo "Setting ${NAME}=${VALUE}" > /dev/stderr
+								einfo "Setting ${NAME}=${VALUE}"
 								echo "${NAME}=${VALUE}"
 							fi
 							OPTIONS[$idx]=""
@@ -119,10 +122,10 @@ src_prepare() {
 			NAME="${OPTIONS[$idx]//=*}"
 			VALUE="${OPTIONS[$idx]//*=}"
 			if test -z "${VALUE}"; then
-				echo "# Adding ${NAME} is not set" > /dev/stderr
+				einfo "# Adding ${NAME} is not set"
 				echo "# ${NAME} is not set"
 			else
-				echo "Adding ${NAME}=${VALUE}" > /dev/stderr
+				einfo "Adding ${NAME}=${VALUE}"
 				echo "${NAME}=${VALUE}"
 			fi
 		done
