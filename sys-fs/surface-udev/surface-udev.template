@@ -11,12 +11,12 @@ SLOT="0"
 UPSTREAM="linux-surface"
 COMMIT=""
 SRC_URI="https://github.com/qzed/${UPSTREAM}/archive/${COMMIT}.zip -> ${PN}-${PVR}.zip"
-FINAL="/etc/udev"
+FINAL="/lib/udev"
 RDEPEND="virtual/udev"
 S="${WORKDIR}/${UPSTREAM}-${COMMIT}"
 
 src_install() {
 	insopts -m 0644
 	insinto	"${FINAL}"
-	doins -r "${S}/root/lib/udev/rules.d"
+	doins -r "${S}/root/etc/udev/rules.d"
 }
