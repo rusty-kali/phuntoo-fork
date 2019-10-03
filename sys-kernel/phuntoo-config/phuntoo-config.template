@@ -28,57 +28,105 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Enable gentoo systemd and module shit
-	KOPTION="CONFIG_GENTOO_LINUX_INIT_SYSTEMD"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_MODULE_COMPRESS"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_MODULE_COMPRESS_XZ"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
+	OPTIONS=(
+		# Enable gentoo systemd and module shit
+		CONFIG_GENTOO_LINUX_INIT_SYSTEMD=y
+		CONFIG_MODULE_COMPRESS=y
+		CONFIG_MODULE_COMPRESS_XZ=y
+		CONFIG_LOCALVERSION='""'
 
-	# Enable the following kernel options as y instead of modules
-	KOPTION="CONFIG_HID"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_UHID"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_HID_GENERIC"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_USB"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_KEYBOARD_ATKBD"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_USB_OHCI_HCD_PCI"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
+		# Enable the following kernel options as y instead of modules
+		CONFIG_HID=y
+		CONFIG_UHID=y
+		CONFIG_HID_GENERIC=y
+		CONFIG_USB=y
+		CONFIG_KEYBOARD_ATKBD=y
+		CONFIG_USB_OHCI_HCD_PCI=y
 
-	# Enable SELinux stuff
-	KOPTION="CONFIG_AUDIT"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_AUDITSYSCALL"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_AUDIT_WATCH"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_AUDIT_TREE"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_SECURITY_NETWORK"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_LSM_MMAP_MIN_ADDR"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=65536" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=65536/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=65536/" ${KCONFIG}; fi
-	KOPTION="CONFIG_SECURITY_SELINUX"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_SECURITY_SELINUX_DEVELOP"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_SECURITY_SELINUX_AVC_STATS"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG}; then echo "${KOPTION}=0" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=0/" ${KCONFIG}; sed -i -e "s/# ${KOPTION} is not set/${KOPTION}=0/" ${KCONFIG}; fi
-	KOPTION="CONFIG_INTEGRITY_AUDIT"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
+		# Enable SELinux stuff
+		CONFIG_AUDIT=y
+		CONFIG_AUDITSYSCALL=y
+		CONFIG_AUDIT_WATCH=y
+		CONFIG_AUDIT_TREE=y
+		CONFIG_SECURITY_NETWORK=y
+		CONFIG_LSM_MMAP_MIN_ADDR=65536
+		CONFIG_SECURITY_SELINUX=y
+		CONFIG_SECURITY_SELINUX_DEVELOP=y
+		CONFIG_SECURITY_SELINUX_AVC_STATS=y
+		CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=0
+		CONFIG_INTEGRITY_AUDIT=y
 
-	# Fix bug where ext4 is missing crc32c module from initramfs
-	KOPTION="CONFIG_EXT4_FS"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-	KOPTION="CONFIG_CRYPTO_CRC32C"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
+		# Fix bug where ext4 is missing crc32c module from initramfs
+		CONFIG_EXT4_FS=y
+		CONFIG_CRYPTO_CRC32C=y
+	)
 
 	if use surface; then
-		KOPTION="CONFIG_INTEL_IPTS"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_INTEL_IPTS_SURFACE"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_SURFACE_BOOK2_DGPU_HPS"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_DRM_I915_ALPHA_SUPPORT"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-		KOPTION="CONFIG_INTEL_ATOMISP2_PM"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=y/" ${KCONFIG}; fi
-		KOPTION="CONFIG_VIDEO_IPU3_CIO2"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_VIDEO_IPU3_IMGU"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_VIDEO_OV5693"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_VIDEO_OV8865"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_SURFACE_ACPI"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_SURFACE_ACPI_SAN"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_SURFACE_ACPI_SSH"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_SURFACE_ACPI_VHF"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_SURFACE_ACPI_DTX"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_SURFACE_ACPI_SID"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=y" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=y/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_SURFACE_3_POWER_OPREGION"; if ! grep -sq "${KOPTION}=" ${KCONFIG} && ! grep -sq "${KOPTION} is not set" ${KCONFIG} ; then echo "${KOPTION}=m" >> "${KCONFIG}"; else sed -i -e "s/${KOPTION}=.*/${KOPTION}=m/" ${KCONFIG}; sed -i -e "s/\# ${KOPTION} is not set/${KOPTION}=m/" ${KCONFIG}; fi
-		KOPTION="CONFIG_PCIEPORTBUS"; sed -ie "s/${KOPTION}=.*/\# ${KOPTION} is not set/" ${KCONFIG}
+		OPTIONS=( ${OPTIONS[@]}
+		CONFIG_INTEL_IPTS=m
+		CONFIG_INTEL_IPTS_SURFACE=m
+		CONFIG_SURFACE_BOOK2_DGPU_HPS=m
+		CONFIG_DRM_I915_ALPHA_SUPPORT=y
+		CONFIG_INTEL_ATOMISP2_PM=y
+		CONFIG_VIDEO_IPU3_CIO2=m
+		CONFIG_VIDEO_IPU3_IMGU=m
+		CONFIG_VIDEO_OV5693=m
+		CONFIG_VIDEO_OV8865=m
+		CONFIG_SURFACE_ACPI=m
+		CONFIG_SURFACE_ACPI_SAN=y
+		CONFIG_SURFACE_ACPI_SSH=y
+		CONFIG_SURFACE_ACPI_VHF=y
+		CONFIG_SURFACE_ACPI_DTX=y
+		CONFIG_SURFACE_ACPI_SID=y
+		CONFIG_SURFACE_3_POWER_OPREGION=m
+		CONFIG_PCIEPORTBUS=
+		)
 	fi
 
-	sed -i -e "s/CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=\"\"/" "${KCONFIG}"
+	cat "${KCONFIG}" | (
+		shopt -s extglob
+		FILTER=${OPTIONS[@]//=*}
+		FILTER="@(${FILTER// /|})"
+		while read line; do
+			OPTION=${line//=*}
+			OPTION=${OPTION//# }
+			OPTION=${OPTION// is not*}
+			case "${OPTION}" in
+				${FILTER})
+					for (( idx=0; idx < ${#OPTIONS[@]}; ++idx )); do
+						NAME="${OPTIONS[$idx]//=*}"
+						VALUE="${OPTIONS[$idx]//*=}"
+						if test "${OPTION}" = "${NAME}"; then
+							if test -z "${VALUE}"; then
+								echo "Setting # ${NAME} is not set" > /dev/stderr
+								echo "# ${NAME} is not set"
+							else
+								echo "Setting ${NAME}=${VALUE}" > /dev/stderr
+								echo "${NAME}=${VALUE}"
+							fi
+							OPTIONS[$idx]=""
+							break
+						fi
+					done
+					;;
+				*)
+					echo $line
+					;;
+			esac
+		done
+		OPTIONS=( ${OPTIONS[@]} )
+		for (( idx=0; idx < ${#OPTIONS[@]}; ++idx )); do
+			NAME="${OPTIONS[$idx]//=*}"
+			VALUE="${OPTIONS[$idx]//*=}"
+			if test -z "${VALUE}"; then
+				echo "# Adding ${NAME} is not set" > /dev/stderr
+				echo "# ${NAME} is not set"
+			else
+				echo "Adding ${NAME}=${VALUE}" > /dev/stderr
+				echo "${NAME}=${VALUE}"
+			fi
+		done
+	) > "${KCONFIG}.new" && mv "${KCONFIG}.new" "${KCONFIG}"
 	eapply_user
 }
 
