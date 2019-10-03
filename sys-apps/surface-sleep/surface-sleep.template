@@ -11,7 +11,7 @@ SLOT="0"
 COMMIT=""
 SRC_URI="https://raw.githubusercontent.com/qzed/linux-surface/${COMMIT}/root/lib/systemd/system-sleep/sleep -> ${PN}-${PVR}"
 IUSE="systemd"
-FINAL="/lib/systemd/system-sleep/"
+FINAL="/lib/systemd/system-sleep"
 RDEPEND="systemd? ( sys-apps/systemd )"
 
 src_unpack() {
@@ -20,15 +20,9 @@ src_unpack() {
 }
 
 src_install() {
-	mv "${WORKDIR}/${PN}-${PVR}/sleep" "${WORKDIR}/${PN}-${PVR}/surface-sleep"
+	mv "${WORKDIR}/${PN}-${PVR}/${PN}-${PVR}" "${WORKDIR}/${PN}-${PVR}/surface-sleep"
 	dosbin surface-sleep
 	if use systemd; then
-		ln -sf /usr/sbin/surface-sleep "${FINAL}/sleep"
+		dosym /usr/sbin/surface-sleep "${FINAL}/sleep"
 	fi
-}
-
-src_install() {
-	insopts -m 0755
-	insinto "${FINAL}"
-	newins "${S}/${PN}-${PVR}" sleep
 }
