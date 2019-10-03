@@ -18,5 +18,5 @@ S="${WORKDIR}/${UPSTREAM}-${COMMIT}"
 src_install() {
 	insopts -m 0644
 	insinto	"${FINAL}"
-	doins -r "${S}/etc/udev/rules.d"
+	doins -r "${S}/root/etc/udev/rules.d"
 }
