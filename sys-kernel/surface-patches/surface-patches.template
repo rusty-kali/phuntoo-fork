@@ -16,6 +16,14 @@ FINAL="/usr/share/${PN}/${PN}-${SLOT}"
 S="${WORKDIR}/${UPSTREAM}-${COMMIT}"
 
 src_install() {
+	if [ ! -d "${S}/patches/${SLOT}" ]; then
+		ewarn "Please beware, there are actually NO"
+		ewarn "kernel patches for your surface device"
+		ewarn "on this kernel. This is a dummy package"
+		ewarn "to prevent dependency issues."
+		mkdir -p "${S}/patches/${SLOT}"
+		touch "${S}/patches/${SLOT}/dummy.patch"
+	fi
 	insopts -m 0644
 	insinto "${FINAL}"
 	doins "${S}/patches/${SLOT}"/*.patch
