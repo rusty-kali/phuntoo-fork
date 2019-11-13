@@ -10,7 +10,7 @@ IUSE="surface"
 
 # Target specific commit for this package. We don't care about their upstream versioning.
 ARCHPACKAGE="linux-lts"
-COMMIT="74642d031c9747db01d2559af8a12984519258df"
+COMMIT="6d82129ac6719690fa5c0fd09d1ddb1883c292cf"
 SRC_URI="https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/${ARCHPACKAGE}&id=${COMMIT} -> ${PN}-${PVR}"
 
 # We want one slot per kernel tree, eg: x.y.

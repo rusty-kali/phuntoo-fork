@@ -3,14 +3,14 @@
 
 EAPI=7
 LICENSE="GPL-2"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 HOMEPAGE="https://www.phuntoo.org/overlay"
 DESCRIPTION="Kernel config ebuilds for Gentoo"
 IUSE="surface"
 
 # Target specific commit for this package. We don't care about their upstream versioning.
-ARCHPACKAGE="linux-lts"
-COMMIT="20d5e134c5154161886d4f049811c9b30cd6544b"
+ARCHPACKAGE="linux"
+COMMIT="5e1a24286849801b5f2723c16abf265140cd33eb"
 SRC_URI="https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/${ARCHPACKAGE}&id=${COMMIT} -> ${PN}-${PVR}"
 
 # We want one slot per kernel tree, eg: x.y.
