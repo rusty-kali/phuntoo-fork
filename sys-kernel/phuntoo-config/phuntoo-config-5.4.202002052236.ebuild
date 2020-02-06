@@ -9,8 +9,8 @@ DESCRIPTION="Kernel config ebuilds for Gentoo"
 IUSE="surface"
 
 # Target specific commit for this package. We don't care about their upstream versioning.
-ARCHPACKAGE="linux"
-COMMIT="dc8d69b59a7a529ec5aaeb6b32b16e59a3cc1569"
+ARCHPACKAGE="linux-lts"
+COMMIT="f81c67d74936ab16f9356add6600be0de003abb4"
 SRC_URI="https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/${ARCHPACKAGE}&id=${COMMIT} -> ${PN}-${PVR}"
 
 # We want one slot per kernel tree, eg: x.y.
