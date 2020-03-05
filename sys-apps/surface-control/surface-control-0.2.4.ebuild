@@ -53,13 +53,12 @@ SRC_URI="
 	https://github.com/qzed/linux-${PN}/archive/v${PV}.tar.gz
 "
 
-S="${WORKDIR}/linux-${P}"
+S="${WORKDIR}/${P}"
 IUSE="bash-completion"
 #RESTRICT="network-sandbox"
 
 DEPEND="
 	>=virtual/rust-1.34.0
-	>=virtual/cargo-1.34.0
 "
 
 src_compile() {
